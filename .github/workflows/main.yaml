@@ -1,0 +1,20 @@
+name: Deploy a Surge
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: Instalar Surge
+        run: npm install -g surge
+
+      - name: Desplegar a Surge
+        run: surge ./ mi-nuevo-subdominioADLCSur.surge.sh --token ${{ secrets.SURGE_TOKENADLC }}
